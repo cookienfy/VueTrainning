@@ -1,0 +1,162 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script type="text/javascript" src="~/Vendor/Vue/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+
+    <div id="app-3">
+        <p v-if="seen">现在你看到我了</p>
+    </div>
+
+    <div id="app-4">
+        <ol>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ol>
+    </div>
+
+    <div id="app-5">
+        <p>{{message}}</p>
+        <button v-on:click="reverseMessage">逆转消息</button>
+
+    </div>
+
+
+    <div id="app-6">
+        <p>{{message}}</p>
+        <input v-model="message" />
+    </div>
+
+    <div id="app-7">
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th align="left">
+                        {{columns.text}}
+                    </th>
+                    <th align="left">
+                        {{columns.value}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="todo in todos">
+                    <td>{{todo.text}}</td>
+                    <td>{{todo.value}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+
+
+    <div id="app-8">
+        <button v-on:click="counter+=1">Add 1</button>
+        <p>This button has clicked {{counter}} times.</p>
+    </div>
+
+
+    <div id="app-9">
+        <input v-model="message" placeholder="Edit me..." />
+        <p>The message is {{message}}</p>
+
+    </div>
+
+    <script type="text/javascript">
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!'
+            }
+        })
+
+
+        var app3 = new Vue({
+            el: '#app-3',
+            data: {
+                seen: false
+            }
+        })
+
+        var app4 = new Vue({
+            el: '#app-4',
+            data: {
+                todos: [
+                    { text: '学习 JavaScript' },
+                    { text: '学习 Vue' },
+                    { text: '整个牛项目' }
+                ]
+            }
+        })
+
+        var app5 = new Vue({
+            el: '#app-5',
+            data: {
+                message: 'Hello Vue.js'
+            },
+            methods: {
+                reverseMessage: function () {
+                    this.message = this.message.split('').reverse().join('');
+                }
+            }
+        })
+
+        var app6 = new Vue({
+            el: '#app-6',
+            data: {
+                message: 'Hello Vue!'
+            }
+        })
+
+
+        var app7 = new Vue({
+            el: '#app-7',
+            data: {
+                columns: { text: 'tttt', value: 'ddddd' },
+                todos: [
+                    { text: 'Learn JaveScript', value: 1 },
+                    { text: 'Learn Vue.js', value: 2 },
+                    { text: 'Build Something Vue.js', value: 3 }
+                ]
+            }
+        })
+
+        var app8 = new Vue({
+            el: '#app-8',
+            data: {
+                counter: 0
+            }
+        })
+
+        var app9 = new Vue({
+            el: '#app-9',
+            data: {
+                message:'11'
+            }
+        })
+
+
+    </script>
+
+</body>
+
+
+
+</html>
