@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace WebApplication1.Controllers
+namespace WebAppForVue.Controllers
 {
     public class HomeController : Controller
     {
@@ -18,6 +18,12 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+
+        public ActionResult VueWithJQuery()
+        {
+            return View();
+        }
+
 
     }
 }
