@@ -8,7 +8,10 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    @*<script type="text/javascript" src="~/Vendor/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Vendor/bootstrap/dist/js/bootstrap.min.js"></script>*@
     <script type="text/javascript" src="~/Vendor/Vue/vue.js"></script>
+    @*<link rel="stylesheet" href="~/Vendor/bootstrap/dist/css/bootstrap.min.css" />*@
     <title>Component</title>
 </head>
 <body>
@@ -25,6 +28,8 @@
             </todo-item>
         </ol>
     </div>
+
+    @Html.Partial("Component/_C_Select2")
 
     <script type="text/javascript">
 

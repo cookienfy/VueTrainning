@@ -1,0 +1,106 @@
+﻿
+<script type="text/javascript" src="~/Vendor/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="~/Vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/Vendor/Vue/vue.js"></script>
+<script type="text/javascript" src="~/Vendor/select2-master/dist/js/select2.full.min.js"></script>
+<link rel="stylesheet" href="~/Vendor/select2-master/dist/css/select2.min.css" />
+<link rel="stylesheet" href="~/Vendor/bootstrap/dist/css/bootstrap.min.css" />
+
+<div id="app">
+    <c-select2></c-select2>
+</div>
+
+<script type="text/javascript">
+
+
+    function BindSelect(ctrlName, url) {
+        var control = $('#' + ctrlName);
+        //设置Select2的处理
+        control.select2({
+            //placeholder: {
+            //    id: '-1', // the value of the option
+            //    text: 'Select an option'
+            //},
+            //allowClear: true,
+            formatResult: function (medata) { },
+            formatSelection: function (medata) {
+                return medata.text;
+            },
+            escapeMarkup: function (m) {
+                return m;
+            }
+        });
+
+        //绑定Ajax的内容
+        $.getJSON(url, function (data) {
+            control.empty();//清空下拉框
+            control.append("<option value='-1'>&nbsp;</option>");
+            $.each(data, function (i, item) {
+                control.append("<option value='" + item.id + "'>&nbsp;" + item.text + "</option>");
+            });
+        });
+    }
+
+
+
+
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            id: 'sel',
+            items: [],
+            selected: null
+        },
+        components: {
+            'c-select2': {
+                template: '<select id=' + this.id + ' class="form-group-sm"><option v-for="item in items" v-bind:value="item.value">{{item.text}}</option></select>'
+            }
+        },
+
+        methods: {
+            createSelect2: function (url) {
+                var control = $(this.id);
+                //设置Select2的处理
+                control.select2({
+
+                    formatResult: function (medata) { },
+                    formatSelection: function (medata) {
+                        return medata.text;
+                    },
+                    escapeMarkup: function (m) {
+                        return m;
+                    }
+                });
+
+                $.post(url, function (data, textStatus, jqXHR) {
+                    //this.items = data.data;
+                    for (var d in data.data)
+                        app.items.push(data.data[d]);
+
+                }, 'json');
+
+                //绑定Ajax的内容
+                //$.getJSON(url, function (data) {
+                //    var vv = this;
+                //    vv.items = data.data;
+                //    //control.empty();//清空下拉框
+                //    //control.append("<option value='-1'>&nbsp;</option>");
+                //    //$.each(data, function (i, item) {
+                //    //    control.append("<option value='" + item.id + "'>&nbsp;" + item.text + "</option>");
+                //    //});
+                //});
+            }
+        }
+
+
+    })
+
+
+    app.createSelect2('@Url.Action("GetSelectData", "Home")')
+
+
+
+</script>
+
+

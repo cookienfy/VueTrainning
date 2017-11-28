@@ -8,10 +8,107 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <script type="text/javascript" src="~/Vendor/Vue/vue.js"></script>
+    <script type="text/javascript" src="~/Vendor/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="~/Vendor/bootstrap/dist/css/bootstrap.min.css" />
     <title>VueWithJQuery</title>
 </head>
 <body>
-    <div> 
+    <div class="row col-lg-8 col-lg-push-2">
+
+
+        <div id="app1">
+            <input type="button" class="btn btn-default" value="GetData" v-on:click="GetData" />
+            <span v-model:title="tip">{{tip}}</span>
+
+            <input v-model="item.name" class="form-control">
+            <input v-model="item.id" class="form-control">
+
+
+            <ol>
+                <todo-item></todo-item>
+            </ol>
+        </div>
+
+
+        <div id="app2">
+            <select v-model="selected" v-on:change="GetValue">
+                <option v-for="item in items" :value="item.value">
+                    {{item.text}}
+                </option>
+
+            </select>
+
+            @*<span>{{selected}}</span>*@
+
+        </div>
     </div>
+
+    <script type="text/javascript">
+
+
+        $(function () {
+
+
+            Vue.component('todo-item', {
+                props: ['todo'],
+                template: '<li>{{ todo.text }}</li>'
+            });
+
+            var app = new Vue({
+                el: '#app1',
+                data: {
+                    item: {},
+                    tip: "Hello, this is a v-bind test."
+                },
+                methods: {
+                    GetData: function () {
+                        var vvv = this;
+                        $.post('@Url.Action("GetVueData","Home")', { name: 'Edwin' },
+                            function (data, textStatus, jqXHR) {
+                                vvv.item = data;
+                            }, 'json');
+                    }
+                }
+            });
+
+
+
+            var appSelect = new Vue({
+                el: '#app2',
+                data: {
+                    items: [],
+                    selected: ""
+                },
+                methods: {
+                    GetValue: function () {
+
+                        alert(this.selected);
+                    },
+                    GetData: function () {
+
+                        $.post('@Url.Action("GetSelectData", "Home")',
+                        function (data, textStatus, jqXHR) {
+                            //this.items = data.data;
+                            for (var d in data.data)
+                                appSelect.items.push(data.data[d]);
+
+                        }, 'json');
+
+                    }
+                }
+
+            });
+
+            appSelect.GetData();
+
+
+        })
+
+
+    </script>
+
 </body>
 </html>
