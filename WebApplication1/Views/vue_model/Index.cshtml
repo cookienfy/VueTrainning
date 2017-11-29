@@ -1,0 +1,70 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <script type="text/javascript" src="~/Vendor/Vue/vue.js"></script>
+    <script type="text/javascript" src="~/Vendor/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="~/Vendor/bootstrap/dist/css/bootstrap.min.css" />
+
+    @*@System.Web.Optimization.Styles.Render("~/bundles/bootstrap/css")*@
+    <title>Index</title>
+</head>
+<body>
+
+    <div>
+        <div id="app" class="form-group-sm col-lg-2">
+            <input class="form-control" v-model="user.name" />
+            <input class="form-control" v-model="user.email" />
+            <p class="input-lg">{{user.name}}</p>
+            <input type="button" class="btn btn-default btn-sm" v-on:click="setValue" value="SetValue" />
+            <input type="button" class="btn btn-default btn-sm" v-on:click="getValue" value="GetValue" />
+        </div>
+    </div>
+
+
+
+    @*@System.Web.Optimization.Scripts.Render("~/bundles/jquery/js")
+        @System.Web.Optimization.Scripts.Render("~/bundles/bootstrap/js")
+
+        @System.Web.Optimization.Scripts.Render("~/bundles/vue/js")*@
+
+
+    <script type="text/javascript">
+
+
+        
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                user: {
+                    name: '',
+                    email: ''
+                }
+            },
+            methods: {
+                setValue: function () {
+                    this.user.name = 'Edwin';
+                    this.user['email'] = 'edwin.nie@msc.com';
+
+                },
+                getValue: function () {
+                    alert(this.user.name);
+                }
+            }
+        });
+
+
+
+    </script>
+
+</body>
+</html>

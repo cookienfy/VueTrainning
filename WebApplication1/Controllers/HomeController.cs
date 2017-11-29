@@ -53,5 +53,12 @@ namespace WebAppForVue.Controllers
         }
 
 
+        #region v-model trainning
+
+
+
+        #endregion
+
+
     }
 }
