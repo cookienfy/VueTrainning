@@ -21,6 +21,7 @@
 
     <div>
         <div id="app" class="form-group-sm col-lg-2">
+            <input type="hidden" v-model="user.Id" />
             <input class="form-control" v-model="user.name" />
             <input class="form-control" v-model="user.email" />
             <p class="input-lg">{{user.name}}</p>
@@ -40,12 +41,13 @@
     <script type="text/javascript">
 
 
-        
+
 
         var app = new Vue({
             el: '#app',
             data: {
                 user: {
+                    Id: null,
                     name: '',
                     email: ''
                 }
@@ -54,10 +56,10 @@
                 setValue: function () {
                     this.user.name = 'Edwin';
                     this.user['email'] = 'edwin.nie@msc.com';
-
+                    this.user['Id'] = 1;
                 },
                 getValue: function () {
-                    alert(this.user.name);
+                    alert(this.user.name + '  ' + this.user.Id);
                 }
             }
         });
