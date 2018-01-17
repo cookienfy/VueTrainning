@@ -6,8 +6,21 @@
 <link rel="stylesheet" href="~/Vendor/select2-master/dist/css/select2.min.css" />
 <link rel="stylesheet" href="~/Vendor/bootstrap/dist/css/bootstrap.min.css" />
 
-<div id="app">
-    <c-select2></c-select2>
+@*<div id="app">
+        <c-select2 :id="{{id}}"></c-select2>
+    </div>*@
+
+<style>
+
+    select {
+        width: 100px;
+    }
+</style>
+<div id="app1">
+    <select :id="id" class="form-group-lg" v-model="selectedText"></select>
+
+    <p>{{selectdValue}}</p>
+    <p>{{selectedText}}</p>
 </div>
 
 <script type="text/javascript">
@@ -41,10 +54,7 @@
         });
     }
 
-
-
-
-
+    /*
     var app = new Vue({
         el: '#app',
         data: {
@@ -54,10 +64,10 @@
         },
         components: {
             'c-select2': {
-                template: '<select id=' + this.id + ' class="form-group-sm"><option v-for="item in items" v-bind:value="item.value">{{item.text}}</option></select>'
+                template: '<select class="form-group-sm"></select>'
             }
         },
-
+        //<option v-for="item in items" v- bind:value = "item.value" > {{item.text }}</option >
         methods: {
             createSelect2: function (url) {
                 var control = $(this.id);
@@ -75,6 +85,7 @@
 
                 $.post(url, function (data, textStatus, jqXHR) {
                     //this.items = data.data;
+                    control.append('<option v-for="item in items" :value = "item.value" > {{item.text }}</option >');
                     for (var d in data.data)
                         app.items.push(data.data[d]);
 
@@ -96,8 +107,51 @@
 
     })
 
+    */
 
-    app.createSelect2('@Url.Action("GetSelectData", "Home")')
+    var app1 = new Vue({
+        el: '#app1',
+        data: {
+            id: 'ser',
+            selectdValue: null,
+            selectedText:"",
+            items:[]
+        },
+        methods: {
+            createSelect2: function (url) {
+                var control = $('#'+this.id);
+                //设置Select2的处理
+                control.select2({
+
+                    formatResult: function (medata) { },
+                    formatSelection: function (medata) {
+                        return medata.text;
+                    },
+                    escapeMarkup: function (m) {
+                        return m;
+                    }
+                });
+
+                $.post(url, function (data, textStatus, jqXHR) {
+                    //this.items = data.data;
+                   // control.append('<option v-for="item in items" :value = "item.value" > {{item.text }}</option >');
+                    for (var d in data.data) {
+                        var r = data.data[d];
+                        control.append("<option value='" + r.value + "'>&nbsp;" + r.text + "</option>");
+                        app1.items.push(data.data[d]);
+                    }
+                }, 'json');
+
+                control.on('change', function (e) {
+                    app1.selectdValue = control.val();
+                    //app1.selectedText = control.text();
+                });
+
+            }
+        }
+    })
+
+  app1.createSelect2('@Url.Action("GetSelectData", "Home")')
 
 
 
