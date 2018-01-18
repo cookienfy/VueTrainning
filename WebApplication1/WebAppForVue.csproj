@@ -149,9 +149,6 @@
     <Content Include="Vendor\bootstrap\js\tooltip.js" />
     <Content Include="Vendor\bootstrap\js\transition.js" />
     <Content Include="Vendor\bootstrap\package.js" />
-    <Content Include="Vendor\daterangepicker-master\daterangepicker.css" />
-    <Content Include="Vendor\daterangepicker-master\daterangepicker.js" />
-    <Content Include="Vendor\daterangepicker-master\moment.min.js" />
     <Content Include="Vendor\jquery\AUTHORS.txt" />
     <Content Include="Vendor\jquery\dist\jquery.js" />
     <Content Include="Vendor\jquery\dist\jquery.min.js" />
