@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery/js")
+    @System.Web.Optimization.Scripts.Render("~/bundles/bootstrap/js")
+    @System.Web.Optimization.Scripts.Render("~/bundles/vue/js")
+
+    @System.Web.Optimization.Styles.Render("~/bundles/bootstrap/css")
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

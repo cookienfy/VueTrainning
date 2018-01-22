@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Datepicker";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Datepicker</h2>
+
+<div id="app">
+    <input class="form-control datepicker" placeholder="Please select date time" style="width:180px;" />
+
+    <input id="btnValue" class="btn btn-warning btn-sm" value="GetValue" style="width:130px;" />
+    <p>{{timeValue}}</p>
+
+</div>
+
+
+
+@System.Web.Optimization.Scripts.Render("~/bundles/datepicker/js")
+@System.Web.Optimization.Styles.Render("~/bundles/datepicker/css")
+
+
+<script type="text/javascript">
+
+    var app = new Vue({
+        el: "#app",
+        data: {
+            timeValue: ""
+        },
+        methods: {
+            getValue: function () {
+                var date = $(".datepicker").datepicker("getDate");//获取
+                this.timeValue = date;
+            }
+        }
+
+
+    });
+
+    $(function () {
+
+        $(".datepicker").datepicker({
+            format: "yyyy-mm-dd",
+            autoclose: true,
+            todayBtn: true
+        });
+
+        $('#btnValue').on('click', function (e) {
+            //var aa = $(".datepicker").datepicker("getDate").toLocaleString();
+            app.getValue();
+            alert(app.$data.timeValue);
+
+        });
+
+    })
+
+</script>

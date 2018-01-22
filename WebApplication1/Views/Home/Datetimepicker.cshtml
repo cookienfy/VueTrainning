@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Datetimepicker";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Datetimepicker</h2>
+
+
+<div id="app">
+    <div class="container">
+        <div class="row">
+            <div class='col-sm-6'>
+
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker1' style="width:240px;">
+                        <input type="text" class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@System.Web.Optimization.Scripts.Render("~/bundles/datetimepicker/js")
+@System.Web.Optimization.Styles.Render("~/bundles/datetimepicker/css")
+
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $('#datetimepicker1').datetimepicker();
+
+    })
+
+</script>

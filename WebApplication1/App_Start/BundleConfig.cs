@@ -17,7 +17,7 @@ namespace WebApplication1
 
             // Bootstrap style
             bundles.Add(new StyleBundle("~/bundles/bootstrap/css").Include(
-                      "~/Vendor/bootstrap/dist/css/bootstrap.min.css", new CssRewriteUrlTransform()));
+                      "~/Vendor/bootstrap/dist/css/bootstrap.css", new CssRewriteUrlTransform()));
 
             // Bootstrap
             bundles.Add(new ScriptBundle("~/bundles/bootstrap/js").Include(
@@ -27,14 +27,47 @@ namespace WebApplication1
             bundles.Add(new ScriptBundle("~/bundles/vue/js").Include(
                       "~/Vendor/Vue/vue.js"));
 
-            //daterangepicker js
-            bundles.Add(new ScriptBundle("~/bundles/daterangepicker-master/js").Include(
-                "~/Vendor/daterangepicker-master/daterangepicker.js",
-                "~/Vendor/daterangepicker-master/moment.min.js"));
+            //datepicker js
+            bundles.Add(new ScriptBundle("~/bundles/datepicker/js").Include(
+                "~/Vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.js"));
 
-            //daterangepicker style
-            bundles.Add(new StyleBundle("~/bundles/daterangepicker-master/css").Include(
-                        "~/Vendor/daterangepicker-master/daterangepicker.css", new CssRewriteUrlTransform()));
+            //datepicker style
+            bundles.Add(new StyleBundle("~/bundles/datepicker/css").Include(
+                        "~/Vendor/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.css", new CssRewriteUrlTransform()));
+
+            //datetimepicker js
+            bundles.Add(new ScriptBundle("~/bundles/datetimepicker/js").Include(
+                "~/Vendor/bootstrap-datetimepicker-master/js/moment.min.js",
+                "~/Vendor/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js"));
+
+            //datetimepicker style
+            bundles.Add(new StyleBundle("~/bundles/datetimepicker/css").Include(
+                        "~/Vendor/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css", new CssRewriteUrlTransform()));
+
+
+
+
+
+
+       //       < script type = "text/javascript" src = "~/Vendor/jquery/dist/jquery.min.js" ></ script >
+   
+       //< script type = "text/javascript" src = "~/Vendor/bootstrap/dist/js/bootstrap.min.js" ></ script >
+      
+       //   < script type = "text/javascript" src = "~/Scripts/moment.min.js" ></ script >
+         
+       //      < script type = "text/javascript" src = "~/Vendor/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js" ></ script >
+            
+
+
+       //         < link rel = "stylesheet" href = "~/Vendor/bootstrap/dist/css/bootstrap.css" />
+               
+       //            < link rel = "stylesheet" href = "~/Vendor/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" />
+
+
+
+
+
+
         }
 
     }

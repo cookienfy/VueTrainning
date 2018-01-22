@@ -52,6 +52,20 @@ namespace WebAppForVue.Controllers
             return Json(new { data = list });
         }
 
+        public ActionResult Datepicker()
+        {
+
+            return View();
+        }
+
+        public ActionResult Datetimepicker()
+        {
+            return View();
+        }
+
+        public ActionResult TestPage()
+        { return View(); }
+
 
         #region v-model trainning
 

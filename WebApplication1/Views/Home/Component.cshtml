@@ -8,45 +8,49 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    @*<script type="text/javascript" src="~/Vendor/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="~/Vendor/bootstrap/dist/js/bootstrap.min.js"></script>*@
-    <script type="text/javascript" src="~/Vendor/Vue/vue.js"></script>
-    @*<link rel="stylesheet" href="~/Vendor/bootstrap/dist/css/bootstrap.min.css" />*@
+    <script type="text/javascript" src="~/Vendor/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Vendor/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.min.js"></script>
+    @*<script type="text/javascript" src="~/Vendor/Vue/vue.js"></script>*@
+    <link rel="stylesheet" href="~/Vendor/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Vendor/bootstrap-datepicker-master/dist/css/bootstrap-datepicker3.css" />
     <title>Component</title>
 </head>
 <body>
-    <div id="app-7">
-        <ol>
-            <!--
-              现在我们为每个 todo-item 提供 todo 对象
-              todo 对象是变量，即其内容可以是动态的。
-              我们也需要为每个组件提供一个“key”，晚些时候我们会做个解释。
-            -->
-            <todo-item v-for="item in groceryList"
-                       v-bind:todo="item"
-                       v-bind:key="item.id">
-            </todo-item>
-        </ol>
-    </div>
 
-    @Html.Partial("Component/_C_Select2")
+
+
+
+    <input type="text" class="form-control-sm datepicker" placeholder="Please select date time" style="width:180px;" />
+    <input type="text" class="form-control datepicker" placeholder="Please select date time" style="width:180px;" />
+
+    @*@Html.Partial("Component/_C_Select2")*@
 
     <script type="text/javascript">
 
-        Vue.component('todo-item', {
-            props: ['todo'],
-            template: '<li>{{ todo.text }}</li>'
+        $(function () {
+
+            $(".datepicker").datepicker({
+                format: "yyyy-mm-dd",
+                autoclose: true,
+                todayBtn:true
+            });
         })
-        var app7 = new Vue({
-            el: '#app-7',
-            data: {
-                groceryList: [
-                    { id: 0, text: '蔬菜' },
-                    { id: 1, text: '奶酪' },
-                    { id: 2, text: '随便其他什么人吃的东西' }
-                ]
-            }
-        })
+
+        //Vue.component('todo-item', {
+        //    props: ['todo'],
+        //    template: '<li>{{ todo.text }}</li>'
+        //})
+        //var app7 = new Vue({
+        //    el: '#app-7',
+        //    data: {
+        //        groceryList: [
+        //            { id: 0, text: '蔬菜' },
+        //            { id: 1, text: '奶酪' },
+        //            { id: 2, text: '随便其他什么人吃的东西' }
+        //        ]
+        //    }
+        //})
 
 
     </script>
