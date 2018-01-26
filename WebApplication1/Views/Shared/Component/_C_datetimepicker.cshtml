@@ -1,0 +1,26 @@
+﻿
+<script type="text/javascript" src="~/Vendor/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="~/Vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/Vendor/Vue/vue.js"></script>
+<script type="text/javascript" src="~/Vendor/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="~/Vendor/bootstrap-datetimepicker-master/js/moment.min.js"></script>
+
+<link rel="stylesheet" href="~/Vendor/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/Vendor/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css" />
+
+
+
+<div id="app">
+
+    <div class="form-group">
+        <div class='input-group date' :id='id' style="width:240px;">
+            <input type="text" class="form-control" v-model="SelectDate" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+
+    </div>
+
+</div>
+
