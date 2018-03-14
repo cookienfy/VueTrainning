@@ -636,6 +636,7 @@
     <Content Include="Views\Home\Datetimepicker.cshtml" />
     <Content Include="Views\Home\TestPage.cshtml" />
     <Content Include="Views\Shared\Component\_C_datetimepicker.cshtml" />
+    <Content Include="Views\Home\BindFormByVue.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "BindFormByVue";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <h2>BindFormByVue</h2>
+    <div class="panel">
+        <div class="panel-body">
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+                    <div class="col-sm-6">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Remember me
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="sel" class="col-sm-3 control-label">Sex:</label>
+                    <div class="col-sm-6">
+                        <select id="sel" class="form-control">
+                            <option value="1">Man</option>
+                            <option value="2">Women</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <button class="btn btn-default">Sign in</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

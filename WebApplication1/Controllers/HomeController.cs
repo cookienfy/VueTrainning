@@ -67,6 +67,13 @@ namespace WebAppForVue.Controllers
         { return View(); }
 
 
+        public ActionResult BindFormByVue()
+        {
+            return View();
+
+        }
+
+
         #region v-model trainning
 
 
